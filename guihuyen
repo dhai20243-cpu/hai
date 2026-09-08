@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Huyền...</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffe6eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            max-width: 400px;
+            width: 90%;
+            transition: all 0.5s ease;
+        }
+        h1, h2 {
+            color: #ff6b81;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #57606f;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        button {
+            background-color: #ff7f50;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+        }
+        button:hover {
+            background-color: #ff6348;
+            transform: scale(1.05);
+        }
+        .btn-yes { background-color: #ff4757; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3); }
+        .btn-yes:hover { background-color: #ff1e34; }
+        .btn-no { background-color: #747d8c; box-shadow: 0 4px 15px rgba(116, 125, 140, 0.3); }
+        .btn-no:hover { background-color: #57606f; }
+        
+        /* Lớp ẩn để chuyển đổi các màn hình */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bước 1: Bảng chào -->
+    <div id="step1" class="container">
+        <h1>Chao huyen </h1>
+        <p>huyen có muốn bắt đầu cùng Hải không?</p>
+        <button onclick="nextStep(1)">Bắt đầu thui </button>
+    </div>
+
+    <!-- Bước 2: Câu hỏi quyết định -->
+    <div id="step2" class="container hidden">
+        <h2>Hỏi thật nhé...</h2>
+        <p>Huyền có thic Hải khong </p>
+        <button class="btn-yes" onclick="showResult('yes')">Có</button>
+        <button class="btn-no" onclick="showResult('no')">Không</button>
+    </div>
+
+    <!-- Bước 3: Kết quả nếu CHỌN CÓ -->
+    <div id="step3-yes" class="container hidden">
+        <h1>Thac a 🎉</h1>
+        <p>Hải cũng vay<br><b>thi ra Hai không phải lop</b></p>
+    </div>
+
+    <!-- Bước 3: Kết quả nếu CHỌN KHÔNG -->
+    <div id="step3-no" class="container hidden">
+        <h1>Trời đất ơi... 🌧️</h1>
+        <p>Hoá ra tôi chỉ là lốp 😭💔</p>
+    </div>
+
+    <script>
+        function nextStep(currentStep) {
+            if (currentStep === 1) {
+                document.getElementById('step1').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+            }
+        }
+
+        function showResult(answer) {
+            document.getElementById('step2').classList.add('hidden');
+            if (answer === 'yes') {
+                document.getElementById('step3-yes').classList.remove('hidden');
+            } else {
+                document.getElementById('step3-no').classList.remove('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>
